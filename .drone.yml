@@ -6,6 +6,7 @@ steps:
     settings:
       repo: test/test
       context: ./server/
+      dockerfile: ./server/Dockerfile
       tags:
         - latest
       dry_run: true
