@@ -1,0 +1,8 @@
+venv/
+.vscode/
+.git/
+.idea/
+Dockerfile
+.env
+.env.example
+.gitignore

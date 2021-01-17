@@ -1,0 +1,1 @@
+from .redirect_model import RedirectModel
