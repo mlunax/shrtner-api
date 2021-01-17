@@ -6,3 +6,4 @@ class RedirectModel:
     key: str
     url: str
     timestamp: str
+

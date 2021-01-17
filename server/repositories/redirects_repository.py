@@ -18,3 +18,6 @@ class RedirectRepository:
 
     def get_url(self, key: str) -> str:
         return self.connector.get_value(key, "url")
+
+    def create(self, model: RedirectModel) -> RedirectModel:
+        self.connector.set_value(model)
