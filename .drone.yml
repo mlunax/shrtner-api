@@ -1,12 +1,47 @@
+---
 kind: pipeline
 name: build
 steps:
   - name: docker-build
     image: plugins/docker
     settings:
-      repo: test/test
+      repo: dockerhub.mlunax.com/lunax/shrtner-api
       context: ./server/
       dockerfile: ./server/Dockerfile
+      registry: dockerhub.mlunax.com
+      cache_from:
+        - dockerhub.mlunax.com/lunax/shrtner-api
       tags:
         - latest
       dry_run: true
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+    when:
+      target:
+        exclude:
+          - production
+  - name: docker-push
+    image: plugins/docker
+    settings:
+      repo: dockerhub.mlunax.com/lunax/shrtner-api
+      context: ./server/
+      dockerfile: ./server/Dockerfile
+      registry: dockerhub.mlunax.com
+      cache_from:
+        - dockerhub.mlunax.com/lunax/shrtner-api
+      tags:
+        - latest
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+    when:
+    event:
+      - promote
+    target:
+      - production
+---
+kind: signature
+hmac: 21b924f3620ddec53ca4c9abd0882d1a926472433132122838292c555d2b8dbd
