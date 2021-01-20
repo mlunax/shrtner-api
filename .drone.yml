@@ -6,8 +6,6 @@ steps:
     image: plugins/docker
     settings:
       repo: dockerhub.mlunax.com/lunax/shrtner-api
-      context: ./server/
-      dockerfile: ./server/Dockerfile
       registry: dockerhub.mlunax.com
       cache_from:
         - dockerhub.mlunax.com/lunax/shrtner-api:latest
@@ -26,8 +24,6 @@ steps:
     image: plugins/docker
     settings:
       repo: dockerhub.mlunax.com/lunax/shrtner-api
-      context: ./server/
-      dockerfile: ./server/Dockerfile
       registry: dockerhub.mlunax.com
       cache_from:
         - dockerhub.mlunax.com/lunax/shrtner-api:latest
